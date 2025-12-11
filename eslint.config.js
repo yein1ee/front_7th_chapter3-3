@@ -28,6 +28,10 @@ export default tseslint.config(
         {
           "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
           "pathGroups": [
+            // React를 가장 먼저 오도록 설정
+            { pattern: "react", group: "external", position: "before" },
+            { pattern: "react-dom/**", group: "external", position: "before" },
+            { pattern: "react/**", group: "external", position: "before" },
             { pattern: "@/app/**", group: "internal", position: "before" },
             { pattern: "@/views/**", group: "internal", position: "before" },
             { pattern: "@/widgets/**", group: "internal", position: "before" },
@@ -35,6 +39,7 @@ export default tseslint.config(
             { pattern: "@/entities/**", group: "internal", position: "before" },
             { pattern: "@/shared/**", group: "internal", position: "before" },
           ],
+          "pathGroupsExcludedImportTypes": ["react", "react-dom"],
           "newlines-between": "always",
           "alphabetize": {
             order: "asc",
